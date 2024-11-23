@@ -5,7 +5,7 @@ from pprint import pprint
 
 
 # 自行輸入頁數.取得所有問答內容與網址
-def fetch_liberary_data(page):
+def fetch_library_data(page):
     # 建立 list 來放置列表資訊
     list_posts = []
     
@@ -59,4 +59,4 @@ def fetch_liberary_data(page):
     
 # 自行輸入頁數 顯示該頁資料
 page_number = int(input("請輸入頁數: "))
-fetch_liberary_data(page_number)
+fetch_library_data(page_number)

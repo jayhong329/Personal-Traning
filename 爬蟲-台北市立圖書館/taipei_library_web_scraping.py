@@ -9,13 +9,13 @@ connection = pymysql.connect(
     host = 'localhost',
     user = 'root',
     password = 'P@ssw0rd',
-    database = 'taipei_liberary',
+    database = 'taipei_library',
     charset = 'utf8mb4',
     cursorclass=pymysql.cursors.DictCursor
 )
 
 # 自行輸入頁數.取得所有問答內容與網址
-def fetch_liberary_data(page):
+def fetch_library_data(page):
     # 建立 list 來放置列表資訊
     list_posts = []
 
@@ -65,12 +65,12 @@ latest_page = 5
 # 在已經知道分頁數的情況下
 for page in range(init_page, latest_page + 1):
     print(f"正在處理第 {page} 頁...")
-    posts = fetch_liberary_data(page)  # 獲取當前頁的所有問答資料
+    posts = fetch_library_data(page)  # 獲取當前頁的所有問答資料
 
     try:
         with connection.cursor() as cursor:  # 使用 with 語法自動處理游標的打開和關閉
             # 直接寫入資料 (新舊資料都在)
-            sql = "INSERT INTO `liberary_qa` (`question`, `answer`, `link`) VALUES (%s, %s, %s)"
+            sql = "INSERT INTO `library_qa` (`question`, `answer`, `link`) VALUES (%s, %s, %s)"
 
             # 準備要插入的資料
             insert_data = [(post['question'], post['answer'],  post['link']) for post in posts]
